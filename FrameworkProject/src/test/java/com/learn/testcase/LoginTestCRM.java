@@ -1,5 +1,6 @@
 package com.learn.testcase;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -10,6 +11,8 @@ import com.learn.pages.LoginPage;
 import com.learn.utilities.BrowserFactory;
 import com.learn.utilities.ExcelDataProvider;
 
+import lombok.experimental.Helper;
+
 import org.openqa.selenium.UsernameAndPassword;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -18,13 +21,16 @@ public class LoginTestCRM extends BaseClass {
 	@Test(priority=1)
 	public void loginApp() throws InterruptedException {
 			
+		
 		ExcelDataProvider excel = new ExcelDataProvider();
 		 
 		LoginPage loginPage =PageFactory.initElements(driver,LoginPage.class); 
 		loginPage.LogintoCRM(excel.getStringData("Login", 0, 0),excel.getStringData("Login", 0, 1));
 		System.out.println("Credentials apply Successfully");
+		//Title Verify
+		
 		//BrowserFactory.quitBrowser(driver);	
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		
 	}
 	@Test(priority=2)
